@@ -10,7 +10,7 @@ The project is also a hands-on way to learn how real data systems are built. It 
 
 ## Project status
 
-Disco is in its design and scaffolding stage. The detailed design, proposed technology choices, costs, and implementation plan are in [the PRD](docs/DISCO_PRD.md).
+Disco is in its design and scaffolding stage. The detailed design, proposed technology choices, and costs are in [the PRD](docs/DISCO_PRD.md). The build order — which phases depend on which, and what has to be true before each one is finished — is in [the roadmap](docs/ROADMAP.md).
 
 ## Repository layout
 

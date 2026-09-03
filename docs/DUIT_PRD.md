@@ -1,17 +1,17 @@
-# SignalWatch — Revised PRD and Architecture Guideline
+# Duit — Revised PRD and Architecture Guideline
 
 > Status: design guideline, not an immutable implementation specification. Pin exact package and provider versions in lockfiles, and re-check vendor pricing before deployment.
 
 ## 1. Executive Summary
 
-SignalWatch is an AWS-native regulatory-event intelligence pipeline. It ingests the **entire SEC EDGAR filing universe**, persists an immutable source record for every observed filing, parses selected documents, ranks research relevance, and delivers evidence-backed Discord alerts.
+Duit is an AWS-native regulatory-event intelligence pipeline. It ingests the **entire SEC EDGAR filing universe**, persists an immutable source record for every observed filing, parses selected documents, ranks research relevance, and delivers evidence-backed Discord alerts.
 
 The system is deliberately split into two planes:
 
 - **Coverage plane:** capture and reconcile every EDGAR filing, including filers without a ticker. This is an ingestion/audit requirement, not a promise that every filing is material.
 - **Research plane:** parse, score, and notify according to configurable form, issuer, and score policies. Its default output is high-signal alerts; an `all_filings` Discord channel may be enabled, but will be extremely noisy.
 
-SignalWatch is a research tool, not investment advice, execution software, or a generic LLM summarizer. An alert must cite its primary filing, relevant verbatim snippet, model and schema versions, feature contributions, and historical analogue statistics.
+Duit is a research tool, not investment advice, execution software, or a generic LLM summarizer. An alert must cite its primary filing, relevant verbatim snippet, model and schema versions, feature contributions, and historical analogue statistics.
 
 ### Important ingestion reality
 
@@ -109,7 +109,7 @@ All artifacts carry `schema_version`, UTC RFC-3339 timestamps, deterministic IDs
 {
   "schema_version": "1.0",
   "event_id": "sha256:...",
-  "raw_document_s3_uri": "s3://signalwatch-raw/sec/year=2026/month=09/day=03/accession=.../filing.sgml",
+  "raw_document_s3_uri": "s3://duit-raw/sec/year=2026/month=09/day=03/accession=.../filing.sgml",
   "document_sha256": "...",
   "form_type": "8-K",
   "parser_version": "rust-parser@0.1.0"
@@ -206,7 +206,7 @@ Costs are regional and usage-dependent; calculate the final estimate in the AWS 
 
 AWS documents EventBridge Scheduler’s 14M free monthly invocations, SQS’s 1M free monthly requests, and Lambda’s per-request/per-GB-second pricing. [EventBridge pricing](https://aws.amazon.com/eventbridge/pricing/) [SQS pricing](https://aws.amazon.com/sqs/pricing/) [Lambda/S3 pricing](https://aws.amazon.com/s3/pricing/)
 
-**Cost controls are recommendations, not hard constraints:** tag every Terraform resource with `project=signalwatch`; configure AWS Budgets and Cost Anomaly Detection; use lifecycle policies; set Lambda reserved concurrency; and add a `SYSTEM_ENABLED` configuration switch. Avoid NAT Gateway and provisioned concurrency unless a measured requirement justifies them.
+**Cost controls are recommendations, not hard constraints:** tag every Terraform resource with `project=duit`; configure AWS Budgets and Cost Anomaly Detection; use lifecycle policies; set Lambda reserved concurrency; and add a `SYSTEM_ENABLED` configuration switch. Avoid NAT Gateway and provisioned concurrency unless a measured requirement justifies them.
 
 ## 8. Collaboration, Delivery, and Benchmarks
 

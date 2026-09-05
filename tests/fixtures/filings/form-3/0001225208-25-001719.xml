@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0206</schemaVersion>
+
+    <documentType>3</documentType>
+
+    <periodOfReport>2025-02-11</periodOfReport>
+
+    <noSecuritiesOwned>1</noSecuritiesOwned>
+
+    <issuer>
+        <issuerCik>0001048286</issuerCik>
+        <issuerName>MARRIOTT INTERNATIONAL INC /MD/</issuerName>
+        <issuerTradingSymbol>MAR</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0002003896</rptOwnerCik>
+            <rptOwnerName>Tresvant Sean</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>7750 WISCONSIN AVENUE</rptOwnerStreet1>
+            <rptOwnerStreet2></rptOwnerStreet2>
+            <rptOwnerCity>BETHESDA</rptOwnerCity>
+            <rptOwnerState>MD</rptOwnerState>
+            <rptOwnerZipCode>20814</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>1</isDirector>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable></nonDerivativeTable>
+
+    <derivativeTable></derivativeTable>
+
+    <footnotes></footnotes>
+
+    <remarks>poasectresvant.txt No Securities beneficially owned</remarks>
+
+    <ownerSignature>
+        <signatureName>Andrew P.C. Wright, Attorney-in-Fact</signatureName>
+        <signatureDate>2025-02-13</signatureDate>
+    </ownerSignature>
+</ownershipDocument>

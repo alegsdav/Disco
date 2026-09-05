@@ -1,0 +1,10 @@
+# Fixture bytes are hashed in tests/fixtures/manifest.json and verified by
+# `make check`. Git must never rewrite line endings in them, or the hashes stop
+# matching on any platform whose checkout normalization differs from the one
+# that built the manifest.
+tests/fixtures/filings/** -text
+tests/fixtures/malformed/** -text
+
+# Generated from the Pydantic models; a byte-for-byte comparison decides whether
+# they are out of date, so they must round-trip through checkout unchanged.
+contracts/schemas/*.schema.json -text

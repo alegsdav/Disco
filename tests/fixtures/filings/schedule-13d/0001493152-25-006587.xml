@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?><edgarSubmission xmlns="http://www.sec.gov/edgar/schedule13D" xmlns:com="http://www.sec.gov/edgar/common">
+  <headerData>
+    <submissionType>SCHEDULE 13D</submissionType>
+    <filerInfo>
+      <filer>
+        <filerCredentials>
+          <!-- Field: Pseudo-Tag; ID: Name; Data: PACIFIC INVESTMENT MANAGEMENT CO LLC -->
+          <cik>0001163368</cik>
+          <ccc>XXXXXXXX</ccc>
+        </filerCredentials>
+      </filer>
+      <liveTestFlag>LIVE</liveTestFlag>
+
+
+
+    </filerInfo>
+  </headerData>
+  <formData>
+    <coverPageHeader>
+      <securitiesClassTitle>Ordinary Shares, no par value</securitiesClassTitle>
+      <dateOfEvent>02/07/2025</dateOfEvent>
+      <previouslyFiledFlag>true</previouslyFiledFlag>
+      <issuerInfo>
+        <issuerCIK>0001850453</issuerCIK>
+        <issuerCUSIP>62857X101</issuerCUSIP>
+        <issuerName>Mynaric AG</issuerName>
+        <address>
+          <com:street1>BERTHA-KIPFMUELLER-STRASSE 2-8</com:street1>
+          <com:city>MUNICH</com:city>
+          <com:stateOrCountry>2M</com:stateOrCountry>
+          <com:zipCode>81249</com:zipCode>
+        </address>
+      </issuerInfo>
+      <authorizedPersons>
+        <notificationInfo>
+          <personName>Zephram Yowell</personName>
+          <personPhoneNum>(949) 720-6000</personPhoneNum>
+          <personAddress>
+            <com:street1>650 Newport Center Drive</com:street1>
+            <com:city>Newport Beach</com:city>
+            <com:stateOrCountry>CA</com:stateOrCountry>
+            <com:zipCode>92660</com:zipCode>
+          </personAddress>
+        </notificationInfo>
+      </authorizedPersons>
+    </coverPageHeader>
+    <reportingPersons>
+      <reportingPersonInfo>
+        <reportingPersonCIK>0001163368</reportingPersonCIK>
+        <reportingPersonNoCIK>N</reportingPersonNoCIK>
+        <reportingPersonName>Pacific Investment Management Company LLC</reportingPersonName>
+        <fundType>OO</fundType>
+        <legalProceedings>N</legalProceedings>
+        <citizenshipOrOrganization>DE</citizenshipOrOrganization>
+        <soleVotingPower>565224.00</soleVotingPower>
+        <sharedVotingPower>0.00</sharedVotingPower>
+        <soleDispositivePower>565224.00</soleDispositivePower>
+        <sharedDispositivePower>0.00</sharedDispositivePower>
+        <aggregateAmountOwned>565224.00</aggregateAmountOwned>
+        <isAggregateExcludeShares>N</isAggregateExcludeShares>
+        <percentOfClass>8.9</percentOfClass>
+        <typeOfReportingPerson>IA</typeOfReportingPerson>
+        <typeOfReportingPerson>OO</typeOfReportingPerson>
+      </reportingPersonInfo>
+    </reportingPersons>
+    <items1To7>
+      <item1>
+        <securityTitle>Ordinary Shares, no par value</securityTitle>
+        <issuerName>Mynaric AG</issuerName>
+        <issuerPrincipalAddress>
+          <com:street1>BERTHA-KIPFMUELLER-STRASSE 2-8</com:street1>
+          <com:city>MUNICH</com:city>
+          <com:stateOrCountry>2M</com:stateOrCountry>
+          <com:zipCode>81249</com:zipCode>
+        </issuerPrincipalAddress>
+      </item1>
+      <item2>
+        <filingPersonName>Pacific Investment Management Company LLC (the "Reporting Person")</filingPersonName>
+        <principalBusinessAddress>650 Newport Center Drive, Newport Beach, CA 92660</principalBusinessAddress>
+        <principalJob>The Reporting Person is an indirect subsidiary of Allianz SE, a publicly held company in Germany. The principal business of the Reporting Person is global investment management services for a wide range of investors.</principalJob>
+        <hasBeenConvicted>During the last five years, the Reporting Person has not been convicted in any criminal proceeding (excluding traffic violations or similar misdemeanors).</hasBeenConvicted>
+        <convictionDescription>During the last five years, the Reporting Person has not been a party to a civil proceeding of a judicial or administrative body of competent jurisdiction resulting in his, her or its being subject to a judgment, decree or final order enjoining future violations of, or prohibiting or mandating activities subject to, federal or state securities laws or finding any violation with respect to such laws.</convictionDescription>
+        <citizenship>The Reporting Person is organized under the laws of the State of Delaware.</citizenship>
+      </item2>
+      <item3>
+        <fundsSource>Working capital of the Reporting Person was the source of funds for Ordinary Shares previously beneficially owned by the Reporting Person.</fundsSource>
+      </item3>
+      <item4>
+        <transactionPurpose>THE STARUG PROCESS
+
+On February 7, 2025 (the "Effective Date"), the Issuer submitted a notification to the local court of Munich (Amtsgericht Munchen) regarding its restructuring plan pursuant to the German Corporate Stabilization and Restructuring Act (Gesetz uber den Stabilisierungs- und Restrukturierungsrahmen fur Unternehmen ("StaRUG")).  The StaRUG process will implement a restructuring of the Issuer at both the equity and debt levels.
+
+Certain investment funds affiliated with the Reporting Person (the "Funds"), are the original sole lenders to Mynaric USA Inc. ("Mynaric US").  The Funds have transferred all claims against Mynaric US under the existing loans to a German SPV (the "SVP") and have subsequently made available new bridge financing to the Issuer.  The loans now held by the SPV are expected to be converted into new equity through a debt-to-equity swap, pursuant to which the Issuer's existing share capital will be reduced to zero and all outstanding Ordinary Shares will be canceled for no value.  As a result, the Reporting Person expects to be the sole beneficial owner of all of the new equity at the conclusion of the StaRUG process, which would result in a de-listing and de-registration of the American Depository Shares (referred to herein as a "De-listing").
+
+GENERAL
+
+In the event that the StaRUG process is unsuccessful or not approved by the court, the Reporting Person may explore strategic alternatives, including but not limited to: corporate transactions involving the Issuer and its securities, such as sales or acquisitions of shares, assets or businesses by the Issuer, including sales to or acquisitions from affiliates of the Reporting Person; engaging with third parties to pursue other strategic transactions, including, but not limited to, a transaction that leads to a De-listing; or other business combination transactions such as a merger, reorganization, or other material transaction.  There can be no guarantee that the Reporting Person will make any such proposal, and if any such proposal is made, the Reporting Person can provide no assurances that they will successfully consummate any proposed transaction.
+
+The Reporting Person intends to engage in communications, discussions and negotiations with members of management and of the board of directors, and their legal, financial, accounting and other advisors; potential partners and counterparties in any transaction; current or prospective securityholders of the Issuer; and other relevant parties, regarding the StaRUG process and, if the StaRUG process is unsuccessful or if not approved by the court, the various alternatives that may from time to time be under consideration by the Reporting Person and/or its affiliates.  To facilitate its consideration of such matters, the Reporting Person has recently, and may in the future, retained consultants and advisors and entered into discussions with potential sources of capital and other third parties.  The Reporting Person may exchange information with any such persons pursuant to appropriate confidentiality or similar obligations or agreements.  The Reporting Person will likely take some or all of the foregoing steps at preliminary stages in its consideration of various possible courses of action before forming any intention to pursue any particular plan or direction.
+
+Other than as described above, the Reporting Person does not currently have any plans or proposals that relate to, or would result in, any of the matters listed in Items 4(a)-(j) of Schedule 13D, although, depending on the factors discussed herein, the Reporting Person may change its purpose or formulate different plans or proposals with respect thereto at any time.</transactionPurpose>
+      </item4>
+      <item5>
+        <percentageOfClassSecurities>Items 11 and 13 of the cover page of this Schedule 13D are incorporated herein by reference.</percentageOfClassSecurities>
+        <numberOfShares>Items 7 through 10 of the cover page of this Schedule 13D are incorporated herein by reference.</numberOfShares>
+        <transactionDesc>Except as set forth in Item 4, the Reporting Person has not engaged in any transactions in the Ordinary Shares during the past sixty days.</transactionDesc>
+        <listOfShareholders>Not applicable.</listOfShareholders>
+        <date5PercentOwnership>Not applicable.</date5PercentOwnership>
+      </item5>
+      <item6>
+        <contractDescription>The responses set forth in Item 4 are incorporated herein by reference in their entirety.
+
+Except as otherwise described in this Schedule 13D, there are no contracts, arrangements, understandings or relationships between the Reporting Person and any other person with respect to any securities of the Issuer.</contractDescription>
+      </item6>
+      <item7>
+        <filedExhibits>None.</filedExhibits>
+      </item7>
+    </items1To7>
+    <signatureInfo>
+      <signaturePerson>
+        <signatureReportingPerson>Pacific Investment Management Company LLC</signatureReportingPerson>
+        <signatureDetails>
+          <signature>/s/ Alyssa Creighton</signature>
+          <title>Alyssa Creighton, Senior Vice President</title>
+          <date>02/13/2025</date>
+        </signatureDetails>
+      </signaturePerson>
+    </signatureInfo>
+  </formData>
+</edgarSubmission>

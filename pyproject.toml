@@ -7,15 +7,22 @@ dependencies = []
 
 [dependency-groups]
 dev = [
+  "jsonschema==4.24.0",
   "mypy==1.16.1",
+  "pytest==8.4.1",
   "ruff==0.12.0",
+  "types-jsonschema==4.24.0.20250528",
 ]
 
 [tool.uv.workspace]
-members = ["services/*"]
+members = ["services/*", "contracts/python"]
+
+[tool.pytest.ini_options]
+testpaths = ["contracts/python/tests", "tests"]
 
 [tool.mypy]
-files = ["services", "scripts"]
+files = ["services", "scripts", "contracts/python", "tests/fixtures/tools"]
+plugins = ["pydantic.mypy"]
 python_version = "3.13"
 strict = true
 

@@ -15,19 +15,37 @@ Run the same command locally and in CI:
 make check
 ```
 
-`make check` installs only the locked Python environment and Terraform provider when they are not already cached, then runs Python linting and type checks, Rust formatting/lints/tests, Terraform formatting/validation, and fixture hash verification.
+`make check` installs only the locked Python environment and Terraform provider when they are not already cached, then runs, in order:
 
-The fixture verifier expects `tests/fixtures/manifest.json` when B1 lands. Its stable format is:
+| Target | What it checks |
+|---|---|
+| `python-check` | `ruff` lint and `mypy --strict` |
+| `contracts-check` | `contracts/schemas/*.json` still match the Pydantic models |
+| `test` | `pytest` — contract validation across every example payload |
+| `rust-check` | `cargo fmt --check`, `clippy -D warnings`, `cargo test` |
+| `terraform-check` | `terraform init -backend=false`, `fmt -check`, `validate` |
+| `fixture-hashes` | SHA-256 of every file in `tests/fixtures/manifest.json` |
 
-```json
-{
-  "files": [
-    {"path": "sample/filing.txt", "sha256": "<lowercase SHA-256>"}
-  ]
-}
+It does not download SEC fixtures, contact AWS, or reach the network beyond package installs.
+
+## Regeneration targets
+
+These write files and are deliberately outside `make check`:
+
+```sh
+make contracts   # regenerate contracts/schemas/ from the Pydantic models
+make fixtures    # re-download the fixture corpus (needs DISCO_SEC_USER_AGENT)
 ```
 
-Until that manifest exists, the check succeeds without verifying fixtures. It does not download SEC fixtures or contact AWS.
+If `contracts-check` fails, run `make contracts` and commit the result. See
+[contracts/README.md](../contracts/README.md) for the compatibility rule that
+governs when a schema may change at all.
+
+## Fixtures
+
+The corpus in `tests/fixtures/` is committed — 23 files, 4.5 MB — so tests run
+offline. `manifest.json` records `path` and `sha256` for each, plus provenance
+the verifier ignores. See [tests/fixtures/README.md](../tests/fixtures/README.md).
 
 ## Pull requests
 

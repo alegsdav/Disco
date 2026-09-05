@@ -1,0 +1,191 @@
+{
+  "$defs": {
+    "EvidenceSnippet": {
+      "additionalProperties": false,
+      "description": "A quotable passage, anchored by offsets into the normalized text.",
+      "properties": {
+        "char_end": {
+          "description": "Exclusive end offset.",
+          "minimum": 0,
+          "title": "Char End",
+          "type": "integer"
+        },
+        "char_start": {
+          "description": "Inclusive start offset.",
+          "minimum": 0,
+          "title": "Char Start",
+          "type": "integer"
+        },
+        "section": {
+          "description": "Section label, for example \"Item 2.02\".",
+          "minLength": 1,
+          "title": "Section",
+          "type": "string"
+        },
+        "text": {
+          "description": "The passage, verbatim from the normalized text.",
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "section",
+        "text",
+        "char_start",
+        "char_end"
+      ],
+      "title": "EvidenceSnippet",
+      "type": "object"
+    },
+    "Fact": {
+      "additionalProperties": false,
+      "description": "One extracted value, normally an XBRL fact.",
+      "properties": {
+        "concept": {
+          "description": "Taxonomy concept, for example us-gaap:Revenues.",
+          "minLength": 1,
+          "title": "Concept",
+          "type": "string"
+        },
+        "period_end": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "End of the reported period.",
+          "title": "Period End"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Unit reference, for example USD.",
+          "title": "Unit"
+        },
+        "value": {
+          "description": "Verbatim value as a string. Never a float: XBRL monetary values exceed double precision and must survive a round trip unchanged.",
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "concept",
+        "value"
+      ],
+      "title": "Fact",
+      "type": "object"
+    },
+    "ParseDiagnostics": {
+      "additionalProperties": false,
+      "description": "What the parse run cost and what it could not read.",
+      "properties": {
+        "bytes_read": {
+          "minimum": 0,
+          "title": "Bytes Read",
+          "type": "integer"
+        },
+        "malformed_nodes_skipped": {
+          "description": "Nodes the parser recovered from rather than failing on. Must be non-zero for the malformed fixtures in tests/fixtures/malformed.",
+          "minimum": 0,
+          "title": "Malformed Nodes Skipped",
+          "type": "integer"
+        },
+        "parse_duration_ms": {
+          "minimum": 0,
+          "title": "Parse Duration Ms",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "bytes_read",
+        "parse_duration_ms",
+        "malformed_nodes_skipped"
+      ],
+      "title": "ParseDiagnostics",
+      "type": "object"
+    }
+  },
+  "$id": "https://github.com/alegsdav/Disco/contracts/schemas/parsed_filing.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Normalized content extracted from one raw document.",
+  "properties": {
+    "diagnostics": {
+      "$ref": "#/$defs/ParseDiagnostics"
+    },
+    "event_id": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "title": "Event Id",
+      "type": "string"
+    },
+    "evidence_snippets": {
+      "items": {
+        "$ref": "#/$defs/EvidenceSnippet"
+      },
+      "title": "Evidence Snippets",
+      "type": "array"
+    },
+    "facts": {
+      "items": {
+        "$ref": "#/$defs/Fact"
+      },
+      "title": "Facts",
+      "type": "array"
+    },
+    "items": {
+      "description": "Item codes present, for example 8-K items. Empty for forms without items.",
+      "items": {
+        "maxLength": 16,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Items",
+      "type": "array"
+    },
+    "normalized_text_sha256": {
+      "description": "Digest of the normalized plain text the parser derived. Every char_start/char_end below indexes into that text, so offsets are only meaningful alongside this digest. `disco-parse --emit-text` writes the text itself for verification.",
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Normalized Text Sha256",
+      "type": "string"
+    },
+    "parser_version": {
+      "pattern": "^rust-parser@\\d+\\.\\d+\\.\\d+$",
+      "title": "Parser Version",
+      "type": "string"
+    },
+    "raw_document_sha256": {
+      "description": "Digest of the raw document this output was produced from.",
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Raw Document Sha256",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "event_id",
+    "parser_version",
+    "raw_document_sha256",
+    "normalized_text_sha256",
+    "diagnostics"
+  ],
+  "title": "ParsedFiling",
+  "type": "object"
+}

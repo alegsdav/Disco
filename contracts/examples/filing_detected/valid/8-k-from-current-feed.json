@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.1",
+  "event_id": "sha256:4be56c90fbe8795f915babd01e201a35305d7d00e1a14c8a8889563140f86ee3",
+  "idempotency_key": "sha256:76cd38924c0ba883a2c3eb85167a32386e179626f07dd601c9004662d37b098d",
+  "accession_number": "0001104659-25-013467",
+  "cik": "0001551152",
+  "ticker": "ABBV",
+  "form_type": "8-K",
+  "primary_document": "tm256372d1_8k.htm",
+  "filed_at": "2025-02-14T16:31:09Z",
+  "observed_at": "2025-02-14T16:33:47Z",
+  "source": {
+    "adapter": "current-feed",
+    "source_uri": "https://www.sec.gov/Archives/edgar/data/1551152/000110465925013467/0001104659-25-013467-index.htm"
+  }
+}

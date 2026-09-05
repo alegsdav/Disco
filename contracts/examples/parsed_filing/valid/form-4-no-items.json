@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "event_id": "sha256:9813732a97e74a83c659aa842aa2d2c504dd01c1e19c590bf82d65bf32f671e3",
+  "parser_version": "rust-parser@0.1.0",
+  "raw_document_sha256": "fc076492567e84900b5e0240ec5f34620539d39c35d592e8ccef19a89826f7de",
+  "normalized_text_sha256": "13504cc8fa5f9843098d347ed6c7d28869ebc4dc22136d316e5ed304ecdbe487",
+  "items": [],
+  "facts": [
+    {
+      "concept": "ownership:transactionShares",
+      "value": "1200",
+      "unit": "shares",
+      "period_end": "2025-02-13"
+    },
+    {
+      "concept": "ownership:transactionPricePerShare",
+      "value": "92.41",
+      "unit": "USD",
+      "period_end": "2025-02-13"
+    }
+  ],
+  "evidence_snippets": [
+    {
+      "section": "Table I",
+      "text": "Non-derivative acquisition of 1,200 shares of common stock at $92.41 per share.",
+      "char_start": 37,
+      "char_end": 116
+    }
+  ],
+  "diagnostics": {
+    "bytes_read": 3153,
+    "parse_duration_ms": 2,
+    "malformed_nodes_skipped": 0
+  }
+}

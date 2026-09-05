@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0",
+  "event_id": "sha256:f0ee3eb33ddc3c25d9d024bd7e09c79f448898d739354d65b4c477bd8c83a0a5",
+  "raw_document_s3_uri": "s3://disco-dev-raw/sec/year=2025/month=02/day=14/accession=0001410578-25-000130/rfacu-20241231x10k.htm",
+  "document_sha256": "ad72a686a29408f185929a9bfe655b368cdd82b441f42121629dbbff5fef276d",
+  "form_type": "10-K",
+  "parser_version": "rust-parser@0.1.0"
+}

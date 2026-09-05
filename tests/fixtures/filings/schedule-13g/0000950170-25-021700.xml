@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><edgarSubmission xmlns="http://www.sec.gov/edgar/schedule13g" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <headerData>
+    <submissionType>SCHEDULE 13G</submissionType>
+    <filerInfo>
+      <filer>
+        <filerCredentials>
+          <cik>0001232643</cik>
+          <ccc>XXXXXXXX</ccc>
+        </filerCredentials>
+      </filer>
+      <liveTestFlag>LIVE</liveTestFlag>
+
+
+
+    </filerInfo>
+  </headerData>
+  <formData>
+    <coverPageHeader>
+      <securitiesClassTitle>Common Stock</securitiesClassTitle>
+      <eventDateRequiresFilingThisStatement>12/31/2024</eventDateRequiresFilingThisStatement>
+      <issuerInfo>
+        <issuerCik>0001061027</issuerCik>
+        <issuerName>Viracta Therapeutics, Inc.</issuerName>
+        <issuerCusip>92765F108</issuerCusip>
+        <issuerPrincipalExecutiveOfficeAddress>
+          <street1 xmlns="http://www.sec.gov/edgar/common">2533 S. Coast Hwy</street1>
+          <city xmlns="http://www.sec.gov/edgar/common">Cardiff</city>
+          <stateOrCountry xmlns="http://www.sec.gov/edgar/common">CA</stateOrCountry>
+          <zipCode xmlns="http://www.sec.gov/edgar/common">92007</zipCode>
+        </issuerPrincipalExecutiveOfficeAddress>
+      </issuerInfo>
+      <designateRulesPursuantThisScheduleFiled>
+        <designateRulePursuantThisScheduleFiled>Rule 13d-1(d)</designateRulePursuantThisScheduleFiled>
+      </designateRulesPursuantThisScheduleFiled>
+    </coverPageHeader>
+    <coverPageHeaderReportingPersonDetails>
+
+
+      <reportingPersonName>Forward Ventures V, LP</reportingPersonName>
+      <citizenshipOrOrganization>DE</citizenshipOrOrganization>
+      <reportingPersonBeneficiallyOwnedNumberOfShares>
+        <soleVotingPower>847600</soleVotingPower>
+        <sharedVotingPower>0</sharedVotingPower>
+        <soleDispositivePower>847600</soleDispositivePower>
+        <sharedDispositivePower>0</sharedDispositivePower>
+      </reportingPersonBeneficiallyOwnedNumberOfShares>
+      <reportingPersonBeneficiallyOwnedAggregateNumberOfShares>847600</reportingPersonBeneficiallyOwnedAggregateNumberOfShares>
+      <aggregateAmountExcludesCertainSharesFlag>N</aggregateAmountExcludesCertainSharesFlag>
+      <classPercent>4.3</classPercent>
+      <typeOfReportingPerson>PN</typeOfReportingPerson>
+    </coverPageHeaderReportingPersonDetails>
+    <items>
+      <item1>
+        <issuerName>Viracta Therapeutics, Inc.</issuerName>
+        <issuerPrincipalExecutiveOfficeAddress>2533 S Coast Hwy 101, Suite 101, Cardiff CA 92007</issuerPrincipalExecutiveOfficeAddress>
+      </item1>
+      <item2>
+        <filingPersonName>Forward Ventures V, L.P., a Delaware Limited Partnership, Forward V Associates, LLC, a Delaware Limited Liability Company, and Standish M. Fleming. The foregoing entities and individuals are collectively referred to as the "Reporting Persons."</filingPersonName>
+        <principalBusinessOfficeOrResidenceAddress>c/o Forward Ventures Services, LLC
+4975 Concannon Ct., San Diego, CA 92130-2723</principalBusinessOfficeOrResidenceAddress>
+        <citizenship>U.S.A.</citizenship>
+      </item2>
+      <item3>
+        <notApplicableFlag>Y</notApplicableFlag>
+      </item3>
+      <item4>
+        <amountBeneficiallyOwned>847,600</amountBeneficiallyOwned>
+        <classPercent>4.3</classPercent>
+        <numberOfSharesPersonHas>
+          <solePowerOrDirectToVote>847,600</solePowerOrDirectToVote>
+          <sharedPowerOrDirectToVote>See response to row 7.</sharedPowerOrDirectToVote>
+          <solePowerOrDirectToDispose>847,600</solePowerOrDirectToDispose>
+          <sharedPowerOrDirectToDispose>See response to row 7.</sharedPowerOrDirectToDispose>
+        </numberOfSharesPersonHas>
+      </item4>
+      <item5>
+        <notApplicableFlag>N</notApplicableFlag>
+        <classOwnership5PercentOrLess>Y</classOwnership5PercentOrLess>
+      </item5>
+      <item6>
+        <notApplicableFlag>Y</notApplicableFlag>
+      </item6>
+      <item7>
+        <notApplicableFlag>Y</notApplicableFlag>
+      </item7>
+      <item8>
+        <notApplicableFlag>Y</notApplicableFlag>
+      </item8>
+      <item9>
+        <notApplicableFlag>Y</notApplicableFlag>
+      </item9>
+      <item10>
+        <notApplicableFlag>N</notApplicableFlag>
+        <certifications>By signing below I certify that, to the best of my knowledge and belief, the securities referred to above were acquired and are held in the ordinary course of business and were not acquired and are not held for the purpose of or with the effect of changing or influencing the control of the issuer of the securities and were not acquired and are not held in connection with or as a participant in any transaction having that purpose or effect, other than activities solely in connection with a nomination under ?? 240.14a-11.
+</certifications>
+      </item10>
+    </items>
+    <signatureInformation>
+      <reportingPersonName>Forward Ventures V, LP</reportingPersonName>
+      <signatureDetails>
+        <signature>/s/ Standish M. Fleming</signature>
+        <title>Managing Member, Forward Ventures V Associates LLC General Partner</title>
+        <date>02/14/2025</date>
+      </signatureDetails>
+    </signatureInformation>
+  </formData>
+</edgarSubmission>

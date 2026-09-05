@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "event_id": "sha256:b5dc036129ab402c487c92b4a5340cb2a5d664e41d7ac3cc2120ef433bd38d92",
+  "decision_time": "2025-02-14T11:07:30Z",
+  "feature_schema_version": "1.0",
+  "model_version": "novelty-tfidf-v1",
+  "scores": {
+    "materiality": 0.55,
+    "novelty": 0.91,
+    "prob_unusual_vol": 0.5,
+    "final": 0.73
+  },
+  "feature_contributions": [
+    {
+      "feature": "novelty_cosine_distance",
+      "contribution": 0.41
+    }
+  ],
+  "historical_analogues": {
+    "sample_size": 0,
+    "median_next_session_rv": 0.0,
+    "peer_baseline_rv": 0.0
+  },
+  "alert_policy": "high_signal_v1",
+  "should_alert": true
+}

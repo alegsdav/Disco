@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.1",
+  "event_id": "sha256:aa49d6ec3b910c24b649d97aad54c11eb7308ab680910553917e1bcdb95ed1a3",
+  "idempotency_key": "sha256:bc9228aea809c825f3bfcdd4257d11819288a5e1177f31e88c88d69f3d663925",
+  "accession_number": "0001085146-25-001422",
+  "cik": "0001167557",
+  "ticker": null,
+  "form_type": "SCHEDULE 13G",
+  "primary_document": "primary_doc.xml",
+  "filed_at": "2025-02-14T19:12:00Z",
+  "observed_at": "2025-02-15T06:00:11Z",
+  "source": {
+    "adapter": "daily-index",
+    "source_uri": "https://www.sec.gov/Archives/edgar/data/1167557/0001085146-25-001422.txt"
+  }
+}

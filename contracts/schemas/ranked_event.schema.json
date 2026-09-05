@@ -1,0 +1,165 @@
+{
+  "$defs": {
+    "FeatureContribution": {
+      "additionalProperties": false,
+      "description": "One feature's signed contribution to the decision.",
+      "properties": {
+        "contribution": {
+          "description": "Logistic-regression coefficient contribution or SHAP value. Signed: negative means the feature argued against alerting.",
+          "title": "Contribution",
+          "type": "number"
+        },
+        "feature": {
+          "minLength": 1,
+          "title": "Feature",
+          "type": "string"
+        }
+      },
+      "required": [
+        "feature",
+        "contribution"
+      ],
+      "title": "FeatureContribution",
+      "type": "object"
+    },
+    "HistoricalAnalogues": {
+      "additionalProperties": false,
+      "description": "What happened after comparable past filings.",
+      "properties": {
+        "median_next_session_rv": {
+          "description": "Median next-session realized volatility across the analogues.",
+          "minimum": 0.0,
+          "title": "Median Next Session Rv",
+          "type": "number"
+        },
+        "peer_baseline_rv": {
+          "description": "Peer-relative baseline the analogue median is read against.",
+          "minimum": 0.0,
+          "title": "Peer Baseline Rv",
+          "type": "number"
+        },
+        "sample_size": {
+          "description": "Number of analogues found. Zero is a valid, reportable answer.",
+          "minimum": 0,
+          "title": "Sample Size",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "sample_size",
+        "median_next_session_rv",
+        "peer_baseline_rv"
+      ],
+      "title": "HistoricalAnalogues",
+      "type": "object"
+    },
+    "Scores": {
+      "additionalProperties": false,
+      "description": "Component scores and the blended final score, all in [0, 1].",
+      "properties": {
+        "final": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Final",
+          "type": "number"
+        },
+        "materiality": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Materiality",
+          "type": "number"
+        },
+        "novelty": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Novelty",
+          "type": "number"
+        },
+        "prob_unusual_vol": {
+          "description": "Calibrated P(next-session realized volatility is abnormal).",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Prob Unusual Vol",
+          "type": "number"
+        }
+      },
+      "required": [
+        "materiality",
+        "novelty",
+        "prob_unusual_vol",
+        "final"
+      ],
+      "title": "Scores",
+      "type": "object"
+    }
+  },
+  "$id": "https://github.com/alegsdav/Disco/contracts/schemas/ranked_event.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "A scored filing and the decision on whether to alert.",
+  "properties": {
+    "alert_policy": {
+      "description": "Policy that produced should_alert, for example high_signal_v1.",
+      "minLength": 1,
+      "title": "Alert Policy",
+      "type": "string"
+    },
+    "decision_time": {
+      "description": "The instant the decision was made. Every feature used must satisfy available_at <= decision_time; this field is what makes that checkable.",
+      "format": "date-time",
+      "title": "Decision Time",
+      "type": "string"
+    },
+    "event_id": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "title": "Event Id",
+      "type": "string"
+    },
+    "feature_contributions": {
+      "items": {
+        "$ref": "#/$defs/FeatureContribution"
+      },
+      "title": "Feature Contributions",
+      "type": "array"
+    },
+    "feature_schema_version": {
+      "pattern": "^\\d+\\.\\d+$",
+      "title": "Feature Schema Version",
+      "type": "string"
+    },
+    "historical_analogues": {
+      "$ref": "#/$defs/HistoricalAnalogues"
+    },
+    "model_version": {
+      "description": "Model build, for example lgbm-volatility-v0.2.1 or novelty-tfidf-v1.",
+      "minLength": 1,
+      "title": "Model Version",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "scores": {
+      "$ref": "#/$defs/Scores"
+    },
+    "should_alert": {
+      "title": "Should Alert",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "event_id",
+    "decision_time",
+    "feature_schema_version",
+    "model_version",
+    "scores",
+    "historical_analogues",
+    "alert_policy",
+    "should_alert"
+  ],
+  "title": "RankedEvent",
+  "type": "object"
+}

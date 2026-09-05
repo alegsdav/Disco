@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "event_id": "sha256:52515b7c86f68550bef5afc1696ff0b52f18fea041ddd411c275fb94a690999b",
+  "parser_version": "rust-parser@0.1.0",
+  "raw_document_sha256": "c879b73a77e0101ac64db8128a37f8b234c11c9945293dfa809e7573daf439df",
+  "normalized_text_sha256": "32f424aec1de86c96023a4b3379162d7d63dcc60745bc71f092e225481af0c0c",
+  "items": [
+    "2.02"
+  ],
+  "facts": [],
+  "evidence_snippets": [
+    {
+      "section": "Item 2.02",
+      "text": "On February 13, 2025, Cooper-Standard Holdings Inc. issued a press release",
+      "char_start": 98,
+      "char_end": 172
+    }
+  ],
+  "diagnostics": {
+    "bytes_read": 20064,
+    "parse_duration_ms": 11,
+    "malformed_nodes_skipped": 14
+  }
+}

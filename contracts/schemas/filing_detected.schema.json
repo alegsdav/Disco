@@ -1,0 +1,126 @@
+{
+  "$defs": {
+    "FilingSource": {
+      "additionalProperties": false,
+      "description": "Which adapter saw the filing, and at which URI.",
+      "properties": {
+        "adapter": {
+          "description": "Ingestion adapter that observed the filing.",
+          "enum": [
+            "current-feed",
+            "daily-index",
+            "vendor-stream"
+          ],
+          "title": "Adapter",
+          "type": "string"
+        },
+        "source_uri": {
+          "description": "The EDGAR URI the adapter read. For daily-index this is the full submission text file; for current-feed it is the filing index page.",
+          "minLength": 1,
+          "title": "Source Uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "adapter",
+        "source_uri"
+      ],
+      "title": "FilingSource",
+      "type": "object"
+    }
+  },
+  "$id": "https://github.com/alegsdav/Disco/contracts/schemas/filing_detected.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "A filing observed on EDGAR, before anything has been downloaded.",
+  "properties": {
+    "accession_number": {
+      "pattern": "^\\d{10}-\\d{2}-\\d{6}$",
+      "title": "Accession Number",
+      "type": "string"
+    },
+    "cik": {
+      "description": "Zero-padded CIK of the filer the index attributed.",
+      "pattern": "^\\d{10}$",
+      "title": "Cik",
+      "type": "string"
+    },
+    "event_id": {
+      "description": "sha256 of the accession number, prefixed \"sha256:\". Stable from discovery onward and identical across adapters, so the same filing seen twice deduplicates to one event.",
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "title": "Event Id",
+      "type": "string"
+    },
+    "filed_at": {
+      "description": "Filing timestamp reported by EDGAR.",
+      "format": "date-time",
+      "title": "Filed At",
+      "type": "string"
+    },
+    "form_type": {
+      "maxLength": 40,
+      "minLength": 1,
+      "title": "Form Type",
+      "type": "string"
+    },
+    "idempotency_key": {
+      "description": "sha256 of \"<adapter>|<accession_number>\", prefixed \"sha256:\". Distinguishes a redelivery of one adapter's message from a genuine second observation by a different adapter.",
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "title": "Idempotency Key",
+      "type": "string"
+    },
+    "observed_at": {
+      "description": "When the adapter saw it.",
+      "format": "date-time",
+      "title": "Observed At",
+      "type": "string"
+    },
+    "primary_document": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Filename of the primary document within the submission, when the adapter already knows it. The daily index does not report it, so intake resolves it after the fact.",
+      "title": "Primary Document"
+    },
+    "schema_version": {
+      "const": "1.1",
+      "default": "1.1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source": {
+      "$ref": "#/$defs/FilingSource"
+    },
+    "ticker": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Ticker when known. Most EDGAR filers have none; null is normal.",
+      "title": "Ticker"
+    }
+  },
+  "required": [
+    "event_id",
+    "idempotency_key",
+    "accession_number",
+    "cik",
+    "form_type",
+    "filed_at",
+    "observed_at",
+    "source"
+  ],
+  "title": "FilingDetected",
+  "type": "object"
+}

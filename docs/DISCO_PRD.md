@@ -86,22 +86,31 @@ The daily reconciler is authoritative for completeness. A paid sec-api.io stream
 
 All artifacts carry `schema_version`, UTC RFC-3339 timestamps, deterministic IDs, and a SHA-256 content hash.
 
+> The shapes below are the design intent. The **normative** definitions are the Pydantic models in `contracts/python/`, with `contracts/schemas/*.schema.json` generated from them and committed for non-Python consumers. Where this section and `contracts/` disagree, `contracts/` wins and this section is a bug. See [contracts/README.md](../contracts/README.md) for the compatibility rule.
+
 ### `FilingDetected`
 
 ```json
 {
   "schema_version": "1.1",
-  "event_id": "sha256:accession|primary_document|content_hash",
+  "event_id": "sha256:<sha256 of accession_number>",
+  "idempotency_key": "sha256:<sha256 of adapter|accession_number>",
   "accession_number": "0000000000-26-000001",
   "cik": "0000000000",
   "ticker": null,
   "form_type": "8-K",
+  "primary_document": null,
   "filed_at": "2026-09-03T20:42:00Z",
-  "source": {"adapter": "daily-index", "source_uri": "https://www.sec.gov/..."},
   "observed_at": "2026-09-03T20:45:00Z",
-  "idempotency_key": "sha256:..."
+  "source": {"adapter": "daily-index", "source_uri": "https://www.sec.gov/..."}
 }
 ```
+
+**Identity.** `event_id` is derived from the accession number alone, because `FilingDetected` is emitted at discovery — before anything is downloaded — and the daily index does not report the primary document filename. An earlier draft derived it from `accession | primary_document | content_hash`; neither of those two components exists at the moment the message is created. The accession number already uniquely identifies an EDGAR submission, so a filing seen by both the current feed and the daily index derives one `event_id` and deduplicates to one event. The content hash is still carried on `ParseRequest.document_sha256` and `ParsedFiling.raw_document_sha256`, where it is genuinely known.
+
+`idempotency_key` includes the adapter, so a redelivery of one adapter's message is distinguishable from a second, independent observation. Cross-adapter deduplication is `event_id`'s job.
+
+`primary_document` is optional: the current feed knows it, the daily index does not, and intake resolves it when absent.
 
 ### `ParseRequest`
 
@@ -124,12 +133,15 @@ All artifacts carry `schema_version`, UTC RFC-3339 timestamps, deterministic IDs
   "event_id": "sha256:...",
   "parser_version": "rust-parser@0.1.0",
   "raw_document_sha256": "...",
+  "normalized_text_sha256": "...",
   "items": ["2.02", "9.01"],
   "facts": [{"concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax", "value": "13507000000", "unit": "USD", "period_end": "2026-07-26"}],
   "evidence_snippets": [{"section": "Item 2.02", "text": "...", "char_start": 0, "char_end": 300}],
   "diagnostics": {"bytes_read": 18238124, "parse_duration_ms": 412, "malformed_nodes_skipped": 3}
 }
 ```
+
+**Evidence offsets.** `char_start` and `char_end` index into the parser's normalized text, not the raw document. That text is not carried in the message, so `normalized_text_sha256` pins which normalization the offsets refer to and `disco-parse --emit-text` writes the text itself. Without this, an alert's "verbatim snippet with character offsets" cannot actually be checked by a reader, which is the requirement in §9.
 
 ### `RankedEvent`
 
@@ -173,7 +185,9 @@ The parser reads from S3, streams SGML/XML/XBRL using `quick-xml::Reader`, emits
 3. ML: calibrated Logistic Regression baseline; LightGBM challenger for `P(next-session realized volatility is abnormal)`.
 4. Explainability: Logistic Regression coefficient contributions or LightGBM SHAP contributions; no generated explanation may replace evidence.
 
-Start with only forms that have meaningful corporate-event semantics (`8-K`, `10-Q`, `10-K`, `6-K`, Forms 3/4/5, and 13D/G). Retain all other form metadata in the coverage plane, but do not pay to parse every exhibit before a measured need exists.
+Start with only forms that have meaningful corporate-event semantics (`8-K`, `10-Q`, `10-K`, `6-K`, Forms `3`/`4`/`5`, and Schedules 13D/13G). Retain all other form metadata in the coverage plane, but do not pay to parse every exhibit before a measured need exists.
+
+Match the index's own spelling, not the shorthand above: the daily index reports these as `SCHEDULE 13D` and `SCHEDULE 13G` (with a space, and with `/A` suffixes for amendments), not `SC 13D` or `13D/G`. B6's eligibility policy is matched against the index string, so the shorthand would silently match nothing.
 
 ## 6. Point-in-Time Integrity and Backtesting
 
@@ -214,8 +228,10 @@ AWS documents EventBridge Scheduler’s 14M free monthly invocations, SQS’s 1M
 
 | Owner | Directories | Deliverables |
 |---|---|---|
-| Person A — Platform/SWE | `infra/`, `src/platform/`, `src/discord/`, `src/storage/`, `src/orchestration/`, `tests/integration/` | Terraform, queues, state, commands, deployment, telemetry, fault handling. |
-| Person B — Data/Quant | `contracts/`, `src/edgar/`, `rust-parser/`, `src/features/`, `src/ranking/`, `src/backtest/`, `tests/fixtures/`, `reports/` | Adapters, parser, contracts, features, models, event studies, validation. |
+| Person A — Platform/SWE | `infra/`, `services/command-api/`, `services/dispatcher/`, `services/ingestion/` (runtime shell), `scripts/`, `tests/integration/` | Terraform, queues, state, commands, deployment, telemetry, fault handling. |
+| Person B — Data/Quant | `contracts/`, `rust-parser/`, `services/ingestion/` (adapters), `services/ranking/`, `tests/fixtures/`, `reports/` | Adapters, parser, contracts, features, models, event studies, validation. |
+
+Root build configuration (`pyproject.toml`, `Makefile`, `.github/workflows/`) is A's, but B necessarily touches it when adding a Python package or a check stage. Those edits are called out explicitly in the pull request rather than treated as trespass.
 
 No owner edits the other owner’s directory without a PR agreement. Both approve contract changes. Keep `main` protected and require lint, test, contract-validation, and Terraform-validation checks.
 

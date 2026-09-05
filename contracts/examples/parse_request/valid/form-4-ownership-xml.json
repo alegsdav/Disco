@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0",
+  "event_id": "sha256:9813732a97e74a83c659aa842aa2d2c504dd01c1e19c590bf82d65bf32f671e3",
+  "raw_document_s3_uri": "s3://disco-dev-raw/sec/year=2025/month=02/day=14/accession=0001415889-25-004217/form4-02142025_100258.xml",
+  "document_sha256": "fc076492567e84900b5e0240ec5f34620539d39c35d592e8ccef19a89826f7de",
+  "form_type": "4",
+  "parser_version": "rust-parser@0.1.0"
+}

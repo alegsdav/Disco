@@ -44,18 +44,32 @@ Everyone else reads `schemas/*.schema.json`.
 
 ### The two representations are not identical
 
-Two rules cannot be expressed in JSON Schema, so the models enforce them and the
-schemas do not:
+Both representations require UTC RFC-3339 timestamps: uppercase `T`, seconds,
+optional 1–6 fractional digits, and `Z` or `+00:00`. Numeric epochs, naive
+timestamps, nonzero offsets, and unknown offsets (`-00:00`) are rejected.
+JSON Schema consumers must enable format validation (Python:
+`Draft202012Validator(schema, format_checker=FormatChecker())`) to reject
+impossible dates and times; the schema pattern additionally enforces UTC syntax.
+The development environment pins `rfc3339-validator` for `date-time` checks.
 
-- **Timestamps must be UTC.** A naive or offset timestamp is a well-formed
-  `date-time` string; only the model rejects it.
-- **Evidence offsets must match their text.** `char_end - char_start` must equal
-  `len(text)`; JSON Schema has no cross-field arithmetic.
+**Evidence offsets must match their text.** `char_end - char_start` must equal
+`len(text)`; JSON Schema has no cross-field arithmetic. This is the only
+model-only invalid example. Schema-only consumers must check it themselves.
 
-`contracts/python/tests/test_contracts.py` pins this: each invalid example is
-asserted against both representations, and the two rules above are listed
-explicitly as model-only. A consumer validating with JSON Schema alone gets a
-weaker guarantee and should re-check those two properties itself.
+## Unavailable ranking statistics
+
+`scores.prob_unusual_vol`, `historical_analogues.median_next_session_rv`, and
+`historical_analogues.peer_baseline_rv` are required keys accepting a number or
+JSON `null`. Null means unavailable; zero remains an actual measured value.
+A novelty-only baseline emits null probability until a calibrated model exists.
+With no analogue outcomes, emit `sample_size: 0` and a null median; a peer
+baseline may independently be known or unavailable. Consumers render null as
+“not available” and must not coerce it to zero or a neutral probability.
+Materiality, novelty, final score, and the alert decision remain required values.
+
+These changes finalize the pre-G1 contracts at their existing versions; no
+frozen consumers or stored artifacts are being migrated. Both owners must review
+these semantics before the G1 freeze and merge.
 
 ## Compatibility rule
 

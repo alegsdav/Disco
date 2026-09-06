@@ -7,7 +7,7 @@
   "scores": {
     "materiality": 0.55,
     "novelty": 0.91,
-    "prob_unusual_vol": 0.5,
+    "prob_unusual_vol": null,
     "final": 0.73
   },
   "feature_contributions": [
@@ -18,8 +18,8 @@
   ],
   "historical_analogues": {
     "sample_size": 0,
-    "median_next_session_rv": 0.0,
-    "peer_baseline_rv": 0.0
+    "median_next_session_rv": null,
+    "peer_baseline_rv": null
   },
   "alert_policy": "high_signal_v1",
   "should_alert": true

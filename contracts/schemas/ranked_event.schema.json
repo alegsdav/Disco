@@ -27,16 +27,30 @@
       "description": "What happened after comparable past filings.",
       "properties": {
         "median_next_session_rv": {
-          "description": "Median next-session realized volatility across the analogues.",
-          "minimum": 0.0,
-          "title": "Median Next Session Rv",
-          "type": "number"
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Median next-session realized volatility; null when no outcomes are available.",
+          "title": "Median Next Session Rv"
         },
         "peer_baseline_rv": {
-          "description": "Peer-relative baseline the analogue median is read against.",
-          "minimum": 0.0,
-          "title": "Peer Baseline Rv",
-          "type": "number"
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Peer-relative baseline; null when unavailable.",
+          "title": "Peer Baseline Rv"
         },
         "sample_size": {
           "description": "Number of analogues found. Zero is a valid, reportable answer.",
@@ -76,11 +90,18 @@
           "type": "number"
         },
         "prob_unusual_vol": {
-          "description": "Calibrated P(next-session realized volatility is abnormal).",
-          "maximum": 1.0,
-          "minimum": 0.0,
-          "title": "Prob Unusual Vol",
-          "type": "number"
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Calibrated P(next-session realized volatility is abnormal); null if unavailable.",
+          "title": "Prob Unusual Vol"
         }
       },
       "required": [
@@ -107,6 +128,7 @@
     "decision_time": {
       "description": "The instant the decision was made. Every feature used must satisfy available_at <= decision_time; this field is what makes that checkable.",
       "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,6})?(?:Z|\\+00:00)$",
       "title": "Decision Time",
       "type": "string"
     },

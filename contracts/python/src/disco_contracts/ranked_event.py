@@ -19,10 +19,13 @@ class Scores(DiscoModel):
 
     materiality: float = Field(ge=0.0, le=1.0)
     novelty: float = Field(ge=0.0, le=1.0)
-    prob_unusual_vol: float = Field(
+    prob_unusual_vol: float | None = Field(
         ge=0.0,
         le=1.0,
-        description="Calibrated P(next-session realized volatility is abnormal).",
+        description=(
+            "Calibrated P(next-session realized volatility is abnormal); "
+            "null if unavailable."
+        ),
     )
     final: float = Field(ge=0.0, le=1.0)
 
@@ -46,14 +49,17 @@ class HistoricalAnalogues(DiscoModel):
         ge=0,
         description="Number of analogues found. Zero is a valid, reportable answer.",
     )
-    median_next_session_rv: float = Field(
-        ge=0.0,
-        description="Median next-session realized volatility across the analogues.",
-    )
-    peer_baseline_rv: float = Field(
+    median_next_session_rv: float | None = Field(
         ge=0.0,
         description=(
-            "Peer-relative baseline the analogue median is read against."
+            "Median next-session realized volatility; "
+            "null when no outcomes are available."
+        ),
+    )
+    peer_baseline_rv: float | None = Field(
+        ge=0.0,
+        description=(
+            "Peer-relative baseline; null when unavailable."
         ),
     )
 

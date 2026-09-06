@@ -54,6 +54,7 @@
     "filed_at": {
       "description": "Filing timestamp reported by EDGAR.",
       "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,6})?(?:Z|\\+00:00)$",
       "title": "Filed At",
       "type": "string"
     },
@@ -72,6 +73,7 @@
     "observed_at": {
       "description": "When the adapter saw it.",
       "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,6})?(?:Z|\\+00:00)$",
       "title": "Observed At",
       "type": "string"
     },

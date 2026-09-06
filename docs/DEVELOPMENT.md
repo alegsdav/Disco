@@ -7,6 +7,15 @@
 - Rust 1.88.0 (installed automatically by `rustup` from `rust-toolchain.toml`)
 - Terraform 1.12.2
 
+With mise, install and run the exact versions without changing global defaults:
+
+```sh
+mise install uv@0.7.18 rust@1.88.0 terraform@1.12.2
+mise exec uv@0.7.18 rust@1.88.0 terraform@1.12.2 -- make check
+```
+
+The provider lock includes checksums for macOS ARM64 and Linux AMD64 CI.
+
 ## Validate the repository
 
 Run the same command locally and in CI:
@@ -15,7 +24,8 @@ Run the same command locally and in CI:
 make check
 ```
 
-`make check` installs only the locked Python environment and Terraform provider when they are not already cached, then runs, in order:
+`make check` uses `uv run --locked --all-packages` to install the locked Python
+workspace environment and Terraform provider when they are not already cached, then runs, in order:
 
 | Target | What it checks |
 |---|---|

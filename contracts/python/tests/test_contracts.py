@@ -15,7 +15,7 @@ from typing import Any
 import pytest
 from disco_contracts import CONTRACTS, DiscoModel
 from disco_contracts.export import path_for
-from jsonschema import Draft202012Validator
+from jsonschema import Draft202012Validator, FormatChecker
 from pydantic import ValidationError
 
 EXAMPLES = Path(__file__).resolve().parents[2] / "examples"
@@ -41,7 +41,7 @@ def load(path: Path) -> dict[str, Any]:
 
 def validator_for(name: str) -> Draft202012Validator:
     schema = json.loads(path_for(name).read_text(encoding="utf-8"))
-    return Draft202012Validator(schema)
+    return Draft202012Validator(schema, format_checker=FormatChecker())
 
 
 def ids(cases: list[tuple[str, Path]]) -> list[str]:
@@ -73,14 +73,8 @@ def test_invalid_example_is_rejected_by_the_model(name: str, path: Path) -> None
 
 @pytest.mark.parametrize(("name", "path"), INVALID, ids=ids(INVALID))
 def test_invalid_example_is_rejected_by_the_schema(name: str, path: Path) -> None:
-    # Two invalid examples encode rules JSON Schema cannot express: a naive
-    # timestamp is a well-formed string, and cross-field offset arithmetic has
-    # no schema equivalent. The model is authoritative for those; the schema
-    # deliberately lets them through.
-    model_only = {
-        "filing_detected/timestamp-without-offset",
-        "parsed_filing/snippet-span-does-not-match-text",
-    }
+    # Cross-field offset arithmetic has no standard JSON Schema equivalent.
+    model_only = {"parsed_filing/snippet-span-does-not-match-text"}
     case = f"{name}/{path.stem}"
     errors = list(validator_for(name).iter_errors(load(path)))
     if case in model_only:
@@ -163,3 +157,67 @@ def test_document_hashes_reference_real_fixtures() -> None:
     assert not unknown, (
         f"examples reference documents not in the corpus: {sorted(unknown)}"
     )
+
+
+@pytest.mark.parametrize(
+    ("name", "example", "field"),
+    [
+        ("filing_detected", "8-k-from-daily-index", "filed_at"),
+        ("filing_detected", "8-k-from-daily-index", "observed_at"),
+        ("ranked_event", "alerting-8-k", "decision_time"),
+    ],
+)
+@pytest.mark.parametrize(
+    ("timestamp", "valid"),
+    [
+        ("2025-02-14T12:00:00Z", True),
+        ("2025-02-14T12:00:00.123456+00:00", True),
+        ("2025-02-14T12:00:00", False),
+        ("2025-02-14T12:00:00+01:00", False),
+        ("2025-02-14T12:00:00-00:00", False),
+        ("2025-02-30T12:00:00Z", False),
+        ("2025-02-14T25:00:00Z", False),
+        ("2025-02-14 12:00:00Z", False),
+        ("2025-02-14", False),
+        (1739534400, False),
+        ("1739534400", False),
+        ("not-a-timestamp", False),
+    ],
+)
+def test_timestamp_wire_contract(
+    name: str, example: str, field: str, timestamp: object, valid: bool
+) -> None:
+    payload = load(EXAMPLES / name / "valid" / f"{example}.json")
+    payload[field] = timestamp
+    assert validator_for(name).is_valid(payload) == valid
+    if valid:
+        CONTRACTS[name].model_validate(payload)
+    else:
+        with pytest.raises(ValidationError):
+            CONTRACTS[name].model_validate(payload)
+
+
+@pytest.mark.parametrize(
+    ("section", "field"),
+    [
+        ("scores", "prob_unusual_vol"),
+        ("historical_analogues", "median_next_session_rv"),
+        ("historical_analogues", "peer_baseline_rv"),
+    ],
+)
+@pytest.mark.parametrize("value", [None, 0.0, 0.5, -0.1, "N/A"])
+def test_unavailable_ranking_values(section: str, field: str, value: object) -> None:
+    payload = load(EXAMPLES / "ranked_event" / "valid" / "alerting-8-k.json")
+    payload[section][field] = value
+    valid = value is None or value in (0.0, 0.5)
+    assert validator_for("ranked_event").is_valid(payload) == valid
+    if valid:
+        result = CONTRACTS["ranked_event"].model_validate(payload)
+        assert json.loads(result.model_dump_json())[section][field] == value
+    else:
+        with pytest.raises(ValidationError):
+            CONTRACTS["ranked_event"].model_validate(payload)
+    del payload[section][field]
+    assert not validator_for("ranked_event").is_valid(payload)
+    with pytest.raises(ValidationError):
+        CONTRACTS["ranked_event"].model_validate(payload)

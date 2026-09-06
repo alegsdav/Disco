@@ -2,10 +2,18 @@
 
 from __future__ import annotations
 
+import re
 from datetime import datetime, timedelta
 from typing import Annotated
 
-from pydantic import BaseModel, ConfigDict, StringConstraints, field_validator
+from pydantic import (
+    BaseModel,
+    BeforeValidator,
+    ConfigDict,
+    StringConstraints,
+    WithJsonSchema,
+    field_validator,
+)
 
 # A bare lowercase SHA-256 hex digest, used where the field name already says
 # what was hashed (``document_sha256``).
@@ -40,7 +48,27 @@ SchemaVersion = Annotated[str, StringConstraints(pattern=r"^\d+\.\d+$")]
 NonEmptyString = Annotated[str, StringConstraints(min_length=1)]
 
 # An RFC-3339 timestamp that must carry an offset and must be UTC.
-UtcTimestamp = Annotated[datetime, "UTC RFC-3339 timestamp"]
+UTC_TIMESTAMP_PATTERN = (
+    r"^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}"
+    r"(?:\.[0-9]{1,6})?(?:Z|\+00:00)$"
+)
+
+
+def _timestamp_input(value: object) -> object:
+    if isinstance(value, datetime):
+        return value
+    if not isinstance(value, str) or re.fullmatch(UTC_TIMESTAMP_PATTERN, value) is None:
+        raise ValueError("expected UTC RFC-3339 timestamp with Z or +00:00")
+    return value
+
+
+UtcTimestamp = Annotated[
+    datetime,
+    BeforeValidator(_timestamp_input),
+    WithJsonSchema({
+        "type": "string", "format": "date-time", "pattern": UTC_TIMESTAMP_PATTERN,
+    }),
+]
 
 
 class DiscoModel(BaseModel):

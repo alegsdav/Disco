@@ -1,4 +1,5 @@
 UV ?= uv
+UV_RUN = $(UV) run --locked --all-packages
 CARGO ?= cargo
 TERRAFORM ?= terraform
 
@@ -11,14 +12,14 @@ bootstrap:
 check: python-check contracts-check test rust-check terraform-check fixture-hashes
 
 python-check:
-	$(UV) run ruff check .
-	$(UV) run mypy
+	$(UV_RUN) ruff check .
+	$(UV_RUN) mypy
 
 contracts-check:
-	$(UV) run python -m disco_contracts.export --check
+	$(UV_RUN) python -m disco_contracts.export --check
 
 test:
-	$(UV) run pytest
+	$(UV_RUN) pytest
 
 rust-check:
 	$(CARGO) fmt --manifest-path rust-parser/Cargo.toml --all -- --check
@@ -31,13 +32,13 @@ terraform-check:
 	$(TERRAFORM) -chdir=infra validate
 
 fixture-hashes:
-	$(UV) run python scripts/verify_fixture_hashes.py
+	$(UV_RUN) python scripts/verify_fixture_hashes.py
 
 # --- Regeneration targets. Not part of `check`; they write files. ---
 
 contracts:
-	$(UV) run python -m disco_contracts.export --write
+	$(UV_RUN) python -m disco_contracts.export --write
 
 # Requires DISCO_SEC_USER_AGENT and network access to sec.gov.
 fixtures:
-	$(UV) run python tests/fixtures/tools/build_corpus.py
+	$(UV_RUN) python tests/fixtures/tools/build_corpus.py

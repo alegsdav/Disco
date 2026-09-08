@@ -20,7 +20,7 @@ not running yet.
 | Work | In simple words | Current state |
 |---|---|---|
 | A1: tools and automatic checks | Gave the project its toolbox and a way to catch mistakes. | Included in B1's starting point; merged in the locally known history. |
-| B1: message rules | Agreed on the shape of the information each part sends to the next part. | Written, tested, and approved by both owners; final GitHub checks and merge remain. |
+| B1: message rules | Agreed on the shape of the information each part sends to the next part. | Approved by both owners; GitHub checks passed; merged in PR #2. |
 | B1: practice documents | Saved 18 real SEC documents and 5 deliberately broken ones so we can test without downloading them again. | 23 files checked; all match their recorded fingerprints. |
 | A's receiving exercise | Built a separate reader to see whether another part of the project can understand B's messages. | Passed against B1 commit `a10326b`. Reader and review notes are included in the G1 handoff. |
 
@@ -63,7 +63,9 @@ reader's cleaned document text; that needs the future reader and its output.
 
 ## What do the two owners need to do now?
 
-We are at **G1**, the "agree on the message rules before building further" checkpoint.
+**G1 is finished.** Both owners approved, GitHub checks passed, and B1 merged
+in [PR #2](https://github.com/alegsdav/Disco/pull/2). The checklist below records
+the responsibilities for this completed checkpoint; it does not need repeating.
 
 **Person A — the person building the plumbing:**
 
@@ -150,6 +152,6 @@ This page is maintained by people and coding assistants; it does not update itse
 ## Approved handoff
 
 Both owners approved on 2026-09-07. Their approval steps above are complete.
-The remaining shared step is successful GitHub checks and merge.
+GitHub checks passed and B1 merged at `91ece00`; G1 is closed.
 See [NEXT_STEPS.md](NEXT_STEPS.md) for A2 and B2 starting tasks.
 A's reader now runs automatically inside make check.

@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "event_id": "sha256:2a0f87570c5892227e7e76ca5e667cfe1803979c3a2216ec022a50f95dc25b6d",
+  "parser_version": "rust-parser@0.1.0",
+  "raw_document_sha256": "3de40c5b1f6cf2ea62e4e4c22007bedc0a26f48c189d8a9344cc359df25cfaef",
+  "normalized_text_sha256": "344ecaddfddcee98773af9f57e6dd34343e1445e50e15b91a084bf2bf86ed148",
+  "items": [
+    "2.02"
+  ],
+  "facts": [],
+  "evidence_snippets": [],
+  "diagnostics": {
+    "bytes_read": 33303,
+    "parse_duration_ms": 18,
+    "malformed_nodes_skipped": -1
+  }
+}

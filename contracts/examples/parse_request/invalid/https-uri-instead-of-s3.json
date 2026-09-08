@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0",
+  "event_id": "sha256:2a0f87570c5892227e7e76ca5e667cfe1803979c3a2216ec022a50f95dc25b6d",
+  "raw_document_s3_uri": "https://www.sec.gov/Archives/edgar/data/1320461/000132046125000012/cps-20250213.htm",
+  "document_sha256": "3de40c5b1f6cf2ea62e4e4c22007bedc0a26f48c189d8a9344cc359df25cfaef",
+  "form_type": "8-K",
+  "parser_version": "rust-parser@0.1.0"
+}

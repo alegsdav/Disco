@@ -1,0 +1,52 @@
+{
+  "$id": "https://github.com/alegsdav/Disco/contracts/schemas/parse_request.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "A stored raw document, addressed for parsing.",
+  "properties": {
+    "document_sha256": {
+      "description": "Digest of the raw document bytes as stored. The parser must verify this before parsing; a mismatch means the object was replaced.",
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Document Sha256",
+      "type": "string"
+    },
+    "event_id": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "title": "Event Id",
+      "type": "string"
+    },
+    "form_type": {
+      "maxLength": 40,
+      "minLength": 1,
+      "title": "Form Type",
+      "type": "string"
+    },
+    "parser_version": {
+      "description": "Parser build the request targets, for example rust-parser@0.1.0.",
+      "pattern": "^rust-parser@\\d+\\.\\d+\\.\\d+$",
+      "title": "Parser Version",
+      "type": "string"
+    },
+    "raw_document_s3_uri": {
+      "description": "Versioned S3 location of the immutable raw document.",
+      "pattern": "^s3://[a-z0-9][a-z0-9.\\-]{1,61}[a-z0-9]/.+",
+      "title": "Raw Document S3 Uri",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "event_id",
+    "raw_document_s3_uri",
+    "document_sha256",
+    "form_type",
+    "parser_version"
+  ],
+  "title": "ParseRequest",
+  "type": "object"
+}

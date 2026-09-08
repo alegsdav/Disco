@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "event_id": "sha256:2a0f87570c5892227e7e76ca5e667cfe1803979c3a2216ec022a50f95dc25b6d",
+  "decision_time": "2025-02-14T12:09:00Z",
+  "feature_schema_version": "1.0",
+  "model_version": "lr-volatility-v0.1.0",
+  "scores": {
+    "materiality": 0.78,
+    "novelty": 0.84,
+    "prob_unusual_vol": 0.62,
+    "final": 0.79
+  },
+  "feature_contributions": [
+    {
+      "feature": "novelty_cosine_distance",
+      "contribution": 0.24
+    },
+    {
+      "feature": "form_type_8k_item_202",
+      "contribution": 0.11
+    },
+    {
+      "feature": "filing_time_after_close",
+      "contribution": -0.03
+    }
+  ],
+  "historical_analogues": {
+    "sample_size": 37,
+    "median_next_session_rv": 0.031,
+    "peer_baseline_rv": 0.018
+  },
+  "alert_policy": "high_signal_v1",
+  "should_alert": true
+}

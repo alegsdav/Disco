@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?><edgarSubmission xmlns="http://www.sec.gov/edgar/schedule13g" xmlns:ns1="http://www.sec.gov/edgar/common">
+  <headerData>
+    <submissionType>SCHEDULE 13G</submissionType>
+    <filerInfo>
+      <filer>
+        <filerCredentials>
+          <cik>0001167557</cik>
+          <ccc>XXXXXXXX</ccc>
+        </filerCredentials>
+      </filer>
+      <liveTestFlag>LIVE</liveTestFlag>
+
+
+
+    </filerInfo>
+  </headerData>
+  <formData>
+    <coverPageHeader>
+      <securitiesClassTitle>Common stock</securitiesClassTitle>
+      <eventDateRequiresFilingThisStatement>12/31/2024</eventDateRequiresFilingThisStatement>
+      <issuerInfo>
+        <issuerCik>0002031561</issuerCik>
+        <issuerName>Aldel Financial II Inc.</issuerName>
+        <issuerCusip>G01558108</issuerCusip>
+        <issuerPrincipalExecutiveOfficeAddress>
+          <ns1:street1>104 S. WALNUT STREET</ns1:street1>
+          <ns1:street2>UNIT 1A</ns1:street2>
+          <ns1:city>ITASCA</ns1:city>
+          <ns1:stateOrCountry>IL</ns1:stateOrCountry>
+          <ns1:zipCode>60143</ns1:zipCode>
+        </issuerPrincipalExecutiveOfficeAddress>
+      </issuerInfo>
+      <designateRulesPursuantThisScheduleFiled>
+        <designateRulePursuantThisScheduleFiled>Rule 13d-1(b)</designateRulePursuantThisScheduleFiled>
+      </designateRulesPursuantThisScheduleFiled>
+    </coverPageHeader>
+    <coverPageHeaderReportingPersonDetails>
+
+
+      <reportingPersonName>AQR Capital Management, LLC</reportingPersonName>
+      <citizenshipOrOrganization>X1</citizenshipOrOrganization>
+      <reportingPersonBeneficiallyOwnedNumberOfShares>
+        <soleVotingPower>0</soleVotingPower>
+        <sharedVotingPower>2263184</sharedVotingPower>
+        <soleDispositivePower>0</soleDispositivePower>
+        <sharedDispositivePower>2263184</sharedDispositivePower>
+      </reportingPersonBeneficiallyOwnedNumberOfShares>
+      <reportingPersonBeneficiallyOwnedAggregateNumberOfShares>2263184</reportingPersonBeneficiallyOwnedAggregateNumberOfShares>
+      <aggregateAmountExcludesCertainSharesFlag>N</aggregateAmountExcludesCertainSharesFlag>
+      <classPercent>7.58</classPercent>
+      <typeOfReportingPerson>IA</typeOfReportingPerson>
+    </coverPageHeaderReportingPersonDetails>
+    <coverPageHeaderReportingPersonDetails>
+
+
+      <reportingPersonName>AQR Capital Management Holdings, LLC</reportingPersonName>
+      <citizenshipOrOrganization>X1</citizenshipOrOrganization>
+      <reportingPersonBeneficiallyOwnedNumberOfShares>
+        <soleVotingPower>0</soleVotingPower>
+        <sharedVotingPower>2263184</sharedVotingPower>
+        <soleDispositivePower>0</soleDispositivePower>
+        <sharedDispositivePower>2263184</sharedDispositivePower>
+      </reportingPersonBeneficiallyOwnedNumberOfShares>
+      <reportingPersonBeneficiallyOwnedAggregateNumberOfShares>2263184</reportingPersonBeneficiallyOwnedAggregateNumberOfShares>
+      <aggregateAmountExcludesCertainSharesFlag>N</aggregateAmountExcludesCertainSharesFlag>
+      <classPercent>7.58</classPercent>
+      <typeOfReportingPerson>HC</typeOfReportingPerson>
+    </coverPageHeaderReportingPersonDetails>
+    <coverPageHeaderReportingPersonDetails>
+
+
+      <reportingPersonName>AQR Arbitrage, LLC</reportingPersonName>
+      <citizenshipOrOrganization>X1</citizenshipOrOrganization>
+      <reportingPersonBeneficiallyOwnedNumberOfShares>
+        <soleVotingPower>0</soleVotingPower>
+        <sharedVotingPower>2263184</sharedVotingPower>
+        <soleDispositivePower>0</soleDispositivePower>
+        <sharedDispositivePower>2263184</sharedDispositivePower>
+      </reportingPersonBeneficiallyOwnedNumberOfShares>
+      <reportingPersonBeneficiallyOwnedAggregateNumberOfShares>2263184</reportingPersonBeneficiallyOwnedAggregateNumberOfShares>
+      <aggregateAmountExcludesCertainSharesFlag>N</aggregateAmountExcludesCertainSharesFlag>
+      <classPercent>7.58</classPercent>
+      <typeOfReportingPerson>IA</typeOfReportingPerson>
+    </coverPageHeaderReportingPersonDetails>
+    <items>
+      <item1>
+        <issuerName>Aldel Financial II Inc.</issuerName>
+        <issuerPrincipalExecutiveOfficeAddress>104 S. WALNUT STREET
+UNIT 1A
+ITASCA, ILLINOIS
+60143</issuerPrincipalExecutiveOfficeAddress>
+      </item1>
+      <item2>
+        <filingPersonName>AQR Capital Management, LLC
+
+AQR Capital Management Holdings, LLC
+
+AQR Arbitrage, LLC</filingPersonName>
+        <principalBusinessOfficeOrResidenceAddress>ONE GREENWICH PLAZA
+SUITE 130
+Greenwich, Connecticut
+06830</principalBusinessOfficeOrResidenceAddress>
+        <citizenship>AQR Capital Management, LLC - UNITED STATES
+
+AQR Capital Management Holdings, LLC - UNITED STATES
+
+AQR Arbitrage, LLC - UNITED STATES</citizenship>
+      </item2>
+      <item3>
+        <notApplicableFlag>N</notApplicableFlag>
+        <typeOfPersonFiling>IA</typeOfPersonFiling>
+        <typeOfPersonFiling>HC</typeOfPersonFiling>
+      </item3>
+      <item4>
+        <amountBeneficiallyOwned>2,263,184</amountBeneficiallyOwned>
+        <classPercent>7.58</classPercent>
+        <numberOfSharesPersonHas>
+          <solePowerOrDirectToVote>AQR Capital Management, LLC - 0
+
+AQR Capital Management Holdings, LLC - 0
+
+AQR Arbitrage, LLC - 0</solePowerOrDirectToVote>
+          <sharedPowerOrDirectToVote>AQR Capital Management, LLC - 2,263,184
+
+AQR Capital Management Holdings, LLC - 2,263,184
+
+AQR Arbitrage, LLC - 2,263,184</sharedPowerOrDirectToVote>
+          <solePowerOrDirectToDispose>AQR Capital Management, LLC - 0
+
+AQR Capital Management Holdings, LLC - 0
+
+AQR Arbitrage, LLC - 0</solePowerOrDirectToDispose>
+          <sharedPowerOrDirectToDispose>AQR Capital Management, LLC - 2,263,184
+
+AQR Capital Management Holdings, LLC - 2,263,184
+
+AQR Arbitrage, LLC - 2,263,184</sharedPowerOrDirectToDispose>
+        </numberOfSharesPersonHas>
+      </item4>
+      <item5>
+        <notApplicableFlag>Y</notApplicableFlag>
+      </item5>
+      <item6>
+        <notApplicableFlag>Y</notApplicableFlag>
+      </item6>
+      <item7>
+        <notApplicableFlag>N</notApplicableFlag>
+        <subsidiaryIdentificationAndClassification>See Item 2(a) above.</subsidiaryIdentificationAndClassification>
+      </item7>
+      <item8>
+        <notApplicableFlag>Y</notApplicableFlag>
+      </item8>
+      <item9>
+        <notApplicableFlag>Y</notApplicableFlag>
+      </item9>
+      <item10>
+        <notApplicableFlag>N</notApplicableFlag>
+        <certifications>By signing below I certify that, to the best of my knowledge and belief, the securities referred to above were acquired and are held in the ordinary course of business and were not acquired and are not held for the purpose of or with the effect of changing or influencing the control of the issuer of the securities and were not acquired and are not held in connection with or as a participant in any transaction having that purpose or effect, other than activities solely in connection with a nomination under ?? 240.14a-11.</certifications>
+      </item10>
+    </items>
+    <exhibitInfo>AQR Capital Management Holdings, LLC, AQR Capital Management, LLC, and AQR Arbitrage, LLC hereby agree that this Schedule 13G is filed on behalf of each of the parties. AQR Capital Management, LLC is a wholly owned subsidiary of AQR Capital Management Holdings, LLC. AQR Arbitrage, LLC is deemed to be controlled by AQR Capital Management, LLC.</exhibitInfo>
+    <signatureInformation>
+      <reportingPersonName>AQR Capital Management, LLC</reportingPersonName>
+      <signatureDetails>
+        <signature>Henry Parkin</signature>
+        <title>Authorized Signatory</title>
+        <date>02/14/2025</date>
+      </signatureDetails>
+    </signatureInformation>
+    <signatureInformation>
+      <reportingPersonName>AQR Capital Management Holdings, LLC</reportingPersonName>
+      <signatureDetails>
+        <signature>Henry Parkin</signature>
+        <title>Authorized Signatory</title>
+        <date>02/14/2025</date>
+      </signatureDetails>
+    </signatureInformation>
+    <signatureInformation>
+      <reportingPersonName>AQR Arbitrage, LLC</reportingPersonName>
+      <signatureDetails>
+        <signature>Henry Parkin</signature>
+        <title>Authorized Signatory</title>
+        <date>02/14/2025</date>
+      </signatureDetails>
+    </signatureInformation>
+  </formData>
+</edgarSubmission>

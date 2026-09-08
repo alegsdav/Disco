@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.1",
+  "event_id": "sha256:b5dc036129ab402c487c92b4a5340cb2a5d664e41d7ac3cc2120ef433bd38d92",
+  "idempotency_key": "sha256:3571b7d0c9cf3be7cdd3c543482d840af8ccc77bbb7d4c09be97652b76af517f",
+  "accession_number": "0001140625-25-000028",
+  "cik": "0001140625",
+  "ticker": "EQNR",
+  "form_type": "6-K",
+  "primary_document": "eqnr250214_6-k.htm",
+  "filed_at": "2025-02-14T11:02:33Z",
+  "observed_at": "2025-02-14T11:04:02Z",
+  "source": {
+    "adapter": "current-feed",
+    "source_uri": "https://www.sec.gov/Archives/edgar/data/1140625/000114062525000028/0001140625-25-000028-index.htm"
+  }
+}

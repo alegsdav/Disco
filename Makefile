@@ -10,6 +10,7 @@ bootstrap:
 	$(UV) sync --locked --all-packages --group dev
 
 check: python-check contracts-check test rust-check terraform-check fixture-hashes
+	$(UV_RUN) python scripts/g1_consumer.py
 
 python-check:
 	$(UV_RUN) ruff check .

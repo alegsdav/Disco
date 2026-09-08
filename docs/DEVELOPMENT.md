@@ -1,5 +1,9 @@
 # Development
 
+For a plain-English explanation of progress and next steps, see
+[DEVELOPMENT_BABY.md](DEVELOPMENT_BABY.md). Update that companion with each code
+change in the same pull request: what changed, what was checked, and what remains.
+
 ## Prerequisites
 
 - GNU Make
@@ -62,3 +66,10 @@ the verifier ignores. See [tests/fixtures/README.md](../tests/fixtures/README.md
 Keep each pull request scoped to one roadmap phase or contract change. Run `make check`, describe behavior and limits, and include tests for changed behavior. Contract changes require both owners and must follow the compatibility procedure in `docs/ROADMAP.md`.
 
 Repository administrators must protect `main` and require the `check` workflow before merging; GitHub branch protection cannot be configured from this repository.
+
+## G1 handoff
+
+The check target also runs scripts/g1_consumer.py, an independent JSON Schema
+consumer with format and evidence-span checks. Both owners approved B1 on
+2026-09-07. See [G1_REVIEW.md](G1_REVIEW.md) for evidence and
+[NEXT_STEPS.md](NEXT_STEPS.md) for the A2/B2 handoff.

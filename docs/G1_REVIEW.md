@@ -1,7 +1,7 @@
 # G1 contract review
 
-Status: receiving exercise passed for a10326b; both owners approved via the
-user on 2026-09-07. Pending final-revision CI and merge evidence.
+Status: G1 closed on 2026-09-07 at the user's direction after both owner
+approvals, the receiving exercise, passing final-revision CI, and merge.
 Pipeline work (A2/A3, B4, and offline B2) has not started in this change.
 
 ## Changes to review before freezing
@@ -119,7 +119,11 @@ check evidence span arithmetic; see `contracts/README.md`.
   2026-09-07 ("both of us approve").
 - Person B approval of the final contracts: approved, reported by the user on
   2026-09-07 in the same instruction. No contract changes since the exercise.
-- B1 pull request and green CI run for the reviewed revision: pending.
-- Merge commit on `main`: pending.
+- B1 pull request: [#2](https://github.com/alegsdav/Disco/pull/2).
+- Final revision `648b99508aee81b99f00b5e0788f7fa25713c5c9` passed
+  [CI](https://github.com/alegsdav/Disco/actions/runs/34178030623), including
+  the independent consumer. Contracts were unchanged from the clean-clone exercise.
+- Merge commit on `main`: `91ece0022c430c32b5b945a8cef3a57a7d675a76`.
 
-The receiving owner records closure only after all these items are complete.
+Closure recorded by Codex on behalf of Person A under the user's instruction
+to finalize the approved handoff. A2 and offline B2 may proceed; live B2 needs G2.
